@@ -1,0 +1,3 @@
+nodeJs
+Angular
+npm
