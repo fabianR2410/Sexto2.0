@@ -1,5 +1,4 @@
 
-TODO: Base de datos
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -7,19 +6,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema Sexto
+-- Schema Sextofinal
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema Sexto
+-- Schema Sextofinal
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Sexto` DEFAULT CHARACTER SET utf8 ;
-USE `Sexto` ;
+CREATE SCHEMA IF NOT EXISTS `Sextofinal` DEFAULT CHARACTER SET utf8 ;
+USE `Sextofinal` ;
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Proveedores`
+-- Table `Sextofinal`.`Proveedores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Proveedores` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Proveedores` (
   `idProveedores` INT NOT NULL AUTO_INCREMENT,
   `Nombre_Empresa` VARCHAR(45) NOT NULL,
   `Direccion` TEXT NULL,
@@ -31,9 +30,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Productos`
+-- Table `Sextofinal`.`Productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Productos` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Productos` (
   `idProductos` INT NOT NULL AUTO_INCREMENT,
   `Codigo_Barras` TEXT NULL,
   `Nombre_Producto` TEXT NOT NULL,
@@ -43,9 +42,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Unidad_Medida`
+-- Table `Sextofinal`.`Unidad_Medida`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Unidad_Medida` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Unidad_Medida` (
   `idUnidad_Medida` INT NOT NULL AUTO_INCREMENT,
   `Detalle` TEXT NULL,
   `Tipo` INT NULL COMMENT '1 = Unidad de Medida Ej: Gramos, Litros, Kilos\n0 = Presentacion Ej: Caja, Unidad, Docena, Sixpack\n2 = Factor de Conversion Ej: Kilos a libras',
@@ -54,9 +53,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`IVA`
+-- Table `Sextofinal`.`IVA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`IVA` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`IVA` (
   `idIVA` INT NOT NULL AUTO_INCREMENT,
   `Detalle` VARCHAR(45) NOT NULL COMMENT '8%\n12%\n15%',
   `Estado` INT NOT NULL COMMENT '1 = activo\n0 = inactivo',
@@ -66,9 +65,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Kardex`
+-- Table `Sextofinal`.`Kardex`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Kardex` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Kardex` (
   `idKardex` INT NOT NULL AUTO_INCREMENT,
   `Estado` INT NOT NULL COMMENT 'Campo para almacenar el estado del kardex\n1 = activo\n0 = inactivo',
   `Fecha_Transaccion` DATETIME NOT NULL,
@@ -93,41 +92,41 @@ CREATE TABLE IF NOT EXISTS `Sexto`.`Kardex` (
   INDEX `fk_Kardex_Productos1_idx` (`Productos_idProductos` ASC) ,
   CONSTRAINT `fk_Kardex_Unidad_Medida`
     FOREIGN KEY (`Unidad_Medida_idUnidad_Medida`)
-    REFERENCES `Sexto`.`Unidad_Medida` (`idUnidad_Medida`)
+    REFERENCES `Sextofinal`.`Unidad_Medida` (`idUnidad_Medida`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Kardex_Unidad_Medida1`
     FOREIGN KEY (`Unidad_Medida_idUnidad_Medida1`)
-    REFERENCES `Sexto`.`Unidad_Medida` (`idUnidad_Medida`)
+    REFERENCES `Sextofinal`.`Unidad_Medida` (`idUnidad_Medida`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Kardex_Unidad_Medida2`
     FOREIGN KEY (`Unidad_Medida_idUnidad_Medida2`)
-    REFERENCES `Sexto`.`Unidad_Medida` (`idUnidad_Medida`)
+    REFERENCES `Sextofinal`.`Unidad_Medida` (`idUnidad_Medida`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Kardex_IVA1`
     FOREIGN KEY (`IVA_idIVA`)
-    REFERENCES `Sexto`.`IVA` (`idIVA`)
+    REFERENCES `Sextofinal`.`IVA` (`idIVA`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Kardex_Proveedores1`
     FOREIGN KEY (`Proveedores_idProveedores`)
-    REFERENCES `Sexto`.`Proveedores` (`idProveedores`)
+    REFERENCES `Sextofinal`.`Proveedores` (`idProveedores`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Kardex_Productos1`
     FOREIGN KEY (`Productos_idProductos`)
-    REFERENCES `Sexto`.`Productos` (`idProductos`)
+    REFERENCES `Sextofinal`.`Productos` (`idProductos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Clientes`
+-- Table `Sextofinal`.`Clientes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Clientes` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Clientes` (
   `idClientes` INT NOT NULL AUTO_INCREMENT,
   `Nombres` TEXT NOT NULL,
   `Direccion` TEXT NOT NULL,
@@ -139,9 +138,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Factura`
+-- Table `Sextofinal`.`Factura`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Factura` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Factura` (
   `idFactura` INT NOT NULL AUTO_INCREMENT,
   `Fecha` DATETIME NOT NULL,
   `Sub_total` DECIMAL NOT NULL,
@@ -152,16 +151,16 @@ CREATE TABLE IF NOT EXISTS `Sexto`.`Factura` (
   INDEX `fk_Factura_Clientes1_idx` (`Clientes_idClientes` ASC) ,
   CONSTRAINT `fk_Factura_Clientes1`
     FOREIGN KEY (`Clientes_idClientes`)
-    REFERENCES `Sexto`.`Clientes` (`idClientes`)
+    REFERENCES `Sextofinal`.`Clientes` (`idClientes`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Sexto`.`Detalle_Factura`
+-- Table `Sextofinal`.`Detalle_Factura`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Sexto`.`Detalle_Factura` (
+CREATE TABLE IF NOT EXISTS `Sextofinal`.`Detalle_Factura` (
   `idDetalle_Factura` INT NOT NULL AUTO_INCREMENT,
   `Cantidad` VARCHAR(45) NOT NULL,
   `Factura_idFactura` INT NOT NULL,
@@ -173,12 +172,12 @@ CREATE TABLE IF NOT EXISTS `Sexto`.`Detalle_Factura` (
   INDEX `fk_Detalle_Factura_Kardex1_idx` (`Kardex_idKardex` ASC) ,
   CONSTRAINT `fk_Detalle_Factura_Factura1`
     FOREIGN KEY (`Factura_idFactura`)
-    REFERENCES `Sexto`.`Factura` (`idFactura`)
+    REFERENCES `Sextofinal`.`Factura` (`idFactura`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Detalle_Factura_Kardex1`
     FOREIGN KEY (`Kardex_idKardex`)
-    REFERENCES `Sexto`.`Kardex` (`idKardex`)
+    REFERENCES `Sextofinal`.`Kardex` (`idKardex`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -187,3 +186,5 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
