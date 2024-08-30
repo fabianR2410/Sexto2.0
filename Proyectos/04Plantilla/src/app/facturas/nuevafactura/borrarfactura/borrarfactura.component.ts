@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
-import { IFactura } from '../Interfaces/factura';
+import { IFactura } from '../../../Interfaces/factura';
 import { Router, RouterLink } from '@angular/router';
-import { FacturaService } from '../Services/factura.service';
+import { FacturaService } from '../../../Services/factura.service';
 
 @Component({
   selector: 'app-facturas',
