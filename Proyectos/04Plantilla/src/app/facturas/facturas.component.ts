@@ -40,4 +40,5 @@ export class FacturasComponent implements OnInit {
       }
     });
   }
+
 }

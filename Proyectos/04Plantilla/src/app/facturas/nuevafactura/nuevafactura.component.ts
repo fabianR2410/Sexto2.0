@@ -36,6 +36,8 @@ export class NuevafacturaComponent implements OnInit {
       Sub_total_iva: new FormControl('', Validators.required),
       Valor_IVA: new FormControl('0.15', Validators.required),
       Clientes_idClientes: new FormControl('', Validators.required)
+      //editar factura
+      
     });
 
     this.clietesServicios.todos().subscribe({
