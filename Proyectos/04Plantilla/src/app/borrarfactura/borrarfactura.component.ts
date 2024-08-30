@@ -1,4 +1,4 @@
-/*/
+
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { IFactura } from '../Interfaces/factura';
@@ -10,8 +10,8 @@ import Swal from 'sweetalert2';
   selector: 'app-facturas',
   standalone: true,
   imports: [SharedModule, RouterLink],
-  templateUrl: './facturas.component.html',
-  styleUrl: './facturas.component.scss'
+  templateUrl: './borrarfactura.component.html',
+  styleUrl: './borrarfactura.component.scss'
 })
 export class FacturasComponent implements OnInit {
   listafacturas: IFactura[] = [];
