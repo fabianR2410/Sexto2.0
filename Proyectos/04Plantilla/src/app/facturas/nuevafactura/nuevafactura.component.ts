@@ -13,6 +13,8 @@ import { FacturaService } from 'src/app/Services/factura.service';
   templateUrl: './nuevafactura.component.html',
   styleUrl: './nuevafactura.component.scss'
 })
+
+
 export class NuevafacturaComponent implements OnInit {
   //variables o constantes
   titulo = 'Nueva Factura';
@@ -37,6 +39,7 @@ export class NuevafacturaComponent implements OnInit {
       Valor_IVA: new FormControl('0.15', Validators.required),
       Clientes_idClientes: new FormControl('', Validators.required)
       //editar factura
+      
       
     });
 
@@ -79,4 +82,5 @@ export class NuevafacturaComponent implements OnInit {
     let idCliente = objetoSleect.target.value;
     this.frm_factura.get('Clientes_idClientes')?.setValue(idCliente);
   }
+  
 }
