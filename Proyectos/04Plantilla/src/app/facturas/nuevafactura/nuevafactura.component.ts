@@ -41,6 +41,15 @@ export class NuevafacturaComponent implements OnInit {
       //editar factura
       
       
+    });  
+    this.clietesServicios.todos().subscribe({
+      next: (data) => {
+        this.listaClientes = data;
+        this.listaClientesFiltrada = data;
+      },
+      error: (e) => {
+        console.log(e);
+      }
     });
 
     this.clietesServicios.todos().subscribe({
@@ -83,4 +92,5 @@ export class NuevafacturaComponent implements OnInit {
     this.frm_factura.get('Clientes_idClientes')?.setValue(idCliente);
   }
   
+
 }

@@ -40,5 +40,23 @@ export class FacturasComponent implements OnInit {
       }
     });
   }
+  actualizar (idFactura) {
+    Swal.fire({
+     title: 'Factura',
+     text: 'Esta seguro que desea editar la factura!',
+     icon: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#d33',
+     cancelButtonColor: '#3085d6',
+     confirmButtonText: 'Editar Factura'
+   }).then((result) => {
+     if (result.isConfirmed) {
+       this.facturaServicio.actualizar(idFactura).subscribe((data) => {
+         Swal.fire('Factura', 'La factura ha sido editada.', 'success');
+       this.ngOnInit();
+       });
+     }
+   });
+ }
 
 }
